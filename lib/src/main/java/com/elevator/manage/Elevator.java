@@ -1,6 +1,7 @@
 package com.elevator.manage;
 
 import java.util.PriorityQueue;
+import java.util.function.BooleanSupplier;
 
 public class Elevator {
 	int currentFloor;
@@ -80,5 +81,10 @@ public class Elevator {
 	
 	public int getCurrentFloor() {
 		return this.currentFloor;
+	}
+
+	public boolean isMoving() {
+		// TODO Auto-generated method stub
+		return this.isMoving;
 	}
 }
