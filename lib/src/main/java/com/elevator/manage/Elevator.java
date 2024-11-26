@@ -77,4 +77,8 @@ public class Elevator {
 	public void setRequestQueue(PriorityQueue<Request> requestQueue) {
 		this.requestQueue = requestQueue;
 	}
+	
+	public int getCurrentFloor() {
+		return this.currentFloor;
+	}
 }
