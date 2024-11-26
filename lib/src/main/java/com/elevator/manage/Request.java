@@ -22,4 +22,9 @@ public class Request implements Comparable<Request> {
         if (this.floor == other.floor) return 0;
         return (this.floor < other.floor) ? -1 : 1;
     }
+
+	public int getTargetFloor() {
+		// TODO Auto-generated method stub
+		return this.floor;
+	}
 }
