@@ -17,11 +17,10 @@ public class RequestComparator implements Comparator<Request> {
         boolean r2SameDirection = (r2.getFloor() > currentFloor) == goingUp;
 
         if (r1SameDirection && !r2SameDirection) {
-            return -1; // Prioritize r1 as it's in the current direction
+            return -1; 
         } else if (!r1SameDirection && r2SameDirection) {
-            return 1; // Prioritize r2 as it's in the current direction
+            return 1; 
         } else {
-            // Both are in the same direction or both are opposite, prioritize based on proximity
             return Integer.compare(Math.abs(r1.getFloor() - currentFloor), Math.abs(r2.getFloor() - currentFloor));
         }
     }
