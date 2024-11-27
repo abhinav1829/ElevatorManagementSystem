@@ -8,15 +8,15 @@ public class Elevator {
 	private boolean doorOpen;
 	private boolean goingUp;
 	private PriorityQueue<Request> requestQueue;
-	private static final int MOVE_TIME = 5000; // seconds per floor
-	private static final int DOOR_WAIT_TIME = 5000; // seconds wait on floor
-	static final int maxFloors = 5; // Global variable for max floors
+	private static final int MOVE_TIME = 5000;
+	private static final int DOOR_WAIT_TIME = 5000; 
+	static final int maxFloors = 5; 
 
 	public Elevator() {
-		this.currentFloor = 0; // Start at ground floor
+		this.currentFloor = 0; 
 		this.isMoving = false;
 		this.doorOpen = false;
-		this.goingUp = true; // Default direction is up
+		this.goingUp = true; 
 		this.requestQueue = new PriorityQueue<>(new RequestComparator(currentFloor, goingUp));
 	}
 
@@ -26,7 +26,6 @@ public class Elevator {
 	}
 
 	private synchronized void rebuildQueue() {
-		// Rebuild the queue with the current comparator
 		PriorityQueue<Request> newQueue = new PriorityQueue<>(new RequestComparator(currentFloor, goingUp));
 		newQueue.addAll(this.requestQueue);
 		this.requestQueue = newQueue;
@@ -51,19 +50,16 @@ public class Elevator {
 						isMoving = true;
 						goingUp = nextRequest.getFloor() > currentFloor;
 						currentFloor += goingUp ? 1 : -1;
-						Thread.sleep(MOVE_TIME); // Simulate elevator movement
+						Thread.sleep(MOVE_TIME); 
 						printStatus();
 						rebuildQueue();
 					} else if (nextRequest != null) {
-						// Elevator reaches the target floor
-						//System.out.println("Having  reached");
 						synchronized (this) {
-							//System.out.println("Removing");
-							getRequestQueue().poll(); // Remove completed request
+							getRequestQueue().poll(); 
 						}
 						doorOpen = true;
 						printDoorStatus("Opening");
-						Thread.sleep(DOOR_WAIT_TIME); // Wait on floor
+						Thread.sleep(DOOR_WAIT_TIME);
 						doorOpen = false;
 						printDoorStatus("Closing");
 					}
