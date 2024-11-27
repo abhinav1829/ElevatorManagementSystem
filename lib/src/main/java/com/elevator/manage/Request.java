@@ -19,12 +19,10 @@ public class Request implements Comparable<Request> {
 
     @Override
     public int compareTo(Request other) {
-        if (this.floor == other.floor) return 0;
-        return (this.floor < other.floor) ? -1 : 1;
+        return Integer.compare(this.floor, other.floor);
     }
 
-	public int getTargetFloor() {
-		// TODO Auto-generated method stub
-		return this.floor;
-	}
+    public int getTargetFloor() {
+        return this.floor;
+    }
 }
